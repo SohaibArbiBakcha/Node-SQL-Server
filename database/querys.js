@@ -1,10 +1,52 @@
-﻿exports.querys = {
-  getAllFA: "select * from [dbo].[FaRemarqueEnvoyer]",
-  getProducById: "SELECT * FROM [dbo].[FaRemarqueEnvoyer] Where CodeFA = @Id",
-  addNewProduct:
-    "INSERT INTO [dbo].[FaRemarqueEnvoyer] (CodeFA, FN) VALUES (@CodeFA,@FN);",
-  deleteProduct: "DELETE FROM [webstore].[dbo].[Products] WHERE Id= @Id",
-  getTotalProducts: "SELECT COUNT(*) FROM webstore.dbo.Products",
-  updateProductById:
-    "UPDATE [webstore].[dbo].[Products] SET Name = @name, Description = @description, Quantity = @quantity WHERE Id = @id",
+﻿exports.RH_Members = {
+  getAllMembers: `select * from [dbo].[RH_Members] where 1=1`,
+  getMemberById: "SELECT * FROM [dbo].[RH_Members] Where id = @id",
+  addNewMember: `INSERT INTO [dbo].[RH_Members]
+           ([Id]
+           ,[Matricule]
+           ,[NomComplet]
+           ,[Qualification]
+           ,[TypeContrat]
+           ,[DateEmbauche]
+           ,[DateFin]
+           ,[Discription]
+           ,[SituationActif]
+           ,[Renouvellement])
+     VALUES
+           (@Id
+           ,@Matricule
+           ,@NomComplet
+           ,@Qualification
+           ,@TypeContrat
+           ,@DateEmbauche
+           ,@DateFin
+           ,@Discription
+           ,@SituationActif
+           ,@Renouvellement)`,
+  deleteMembers: "DELETE FROM [dbo].[RH_Members] Where Id = @id",
+  updateMemberById: `UPDATE [dbo].[RH_Members]
+   SET [Matricule] = @Matricule
+      ,[NomComplet] = @NomComplet
+      ,[Qualification] = @Qualification
+      ,[TypeContrat] = @TypeContrat
+      ,[DateEmbauche] = @DateEmbauche
+      ,[DateFin] = @DateFin
+      ,[Discription] = @Discription
+      ,[SituationActif] =@SituationActif
+      ,[Renouvellement] =@Renouvellement
+      WHERE Id = @id`,
+  getMemberCount: "select count(*) as count from [dbo].[RH_Members]",
+};
+
+exports.RH_Qualification = {
+  addNewQualification: `INSERT INTO [dbo].[RH_Qualifications]
+    ([libelle]) VALUES (@libelle)`,
+  getAllQualification: `select * from [dbo].[RH_Qualifications]`,
+  getQualificationById:
+    "SELECT * FROM [dbo].[RH_Qualifications] Where id = @id",
+  deleteQualifications: "DELETE FROM [dbo].[RH_Qualifications] Where Id = @id",
+  updateQualifications:
+    "UPDATE [dbo].[RH_Qualifications] SET [libelle] = @libelle WHERE Id = @id",
+  getQualificationCount:
+    "select count(*) as count from [dbo].[RH_Qualifications]",
 };

@@ -15,7 +15,7 @@ app.use(
     credentials: true,
   })
 );
-
+app.use(cors());
 dotenv.config();
 
 // // middelware
@@ -24,9 +24,11 @@ app.use(bodyParser.json());
 // app.use(bodyParser.urlencoded({ limit: "50mb", extended: true }));
 app.use(cookieParser());
 
-const FA = require("./routes/FA");
+const Members = require("./routes/members");
+const Qualification = require("./routes/qualification");
 
-app.use("/", FA);
+app.use("/", Members);
+app.use("/", Qualification);
 
 const port = process.env.PORT || 8080;
 
